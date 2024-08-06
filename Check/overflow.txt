@@ -1,0 +1,47 @@
+ldi R0, 0
+ldi R3, 1
+ld R2, R0
+ld R0, R2
+
+L0: ld R1, R2
+
+C0: ldi R3, 0
+sub R0, R3
+jmpn C1
+ldi R3, 1
+
+IO: ldi R3, 0
+add R1, R3
+jmpn L1
+ldi R3, 1
+
+C1: ldi R3, 0
+add R0, R3
+jmpn I1
+ldi R3, 1
+jmp C2
+nop
+
+I1: ldi R3, 0
+sub R1, R3
+jmpn C2
+ldi R3, 1
+jmp S0
+nop
+
+C2: sub R1, R0
+jmpn L1
+add R1, R0
+
+S0: mov R0, R1
+
+L1: ld R1, R3
+add R1, R3
+add R2, R3
+sub R2, R1
+jmpn L0
+add R2, R1
+
+halt
+D:  jmp D # DONE !!!
+nop 

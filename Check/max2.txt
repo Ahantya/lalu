@@ -1,0 +1,24 @@
+ldi R3, 0
+ld R2, R3
+ldi R3, 1
+ld R0, R2
+
+Y: add R2, R3
+ld R1, R2
+sub R0, R1
+jmpn N
+add R0, R1
+
+CHECK: ld R1, R3
+sub R2, R1
+jmpn Y
+add R2, R1
+
+halt
+D:  jmp  D       # DONE !!!
+nop
+
+N: jump CHECK
+mov R0, R1
+
+#FFF7, 0003, 0010, 001B, FFDC, 0001, 0005

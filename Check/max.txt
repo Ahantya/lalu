@@ -1,0 +1,28 @@
+ldi R3, 0
+ld R2, R3     #loads in 0th data memory into r1
+ldi R3, 1     #used to access data memory
+load R0, R2    #gets the number at the last address
+
+Y: add R2, R3    #adds to increment address number, but this is clearly wrong
+ld R1, R2    #gets number from new address
+sub R0, R1    #subtracts to check if its negative, if it's negative, R1 is bigger and needs to be replaced into R0.
+jmpn N     #jumps if negative
+add R0, R1   #if not, it adds it back to counteract subtract
+
+CHECK: ld R1, R3   #loads address number R3 into R1 
+sub R2, R1   #subtracts to see if it's larger than last address at R2
+jmpn Y   #if so, it needs to e
+add R2, R1 #if not, it adds back to counteract
+
+N: jump CHECK #jump to see if it has passed address
+mov R0, R1 #if it hasn't, it moves max number into R1.
+
+halt
+D:  jmp  D       # DONE !!!
+nop
+
+
+
+#FFF7, 0003, 0010, 001B, FFDC, 0001, 0005
+
+

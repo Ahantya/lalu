@@ -1,0 +1,47 @@
+ldi R3, 0
+ld R2, R3
+ldi R3, 1
+ld R0, R2
+
+L0: ld R1, R2
+
+C0: sub R3, R3
+sub R0, R3
+jmpn C1
+ldi R3, 1
+
+IO: sub R3, R3
+add R1, R3
+jmpn CHECKOVER
+ldi R3, 1
+
+C1: sub R3, R3
+add R0, R3
+jmpn I1
+ldi R3, 1
+jmp USELESS
+nop
+
+I1: sub R3, R3
+sub R1, R3
+jmpn USELESS
+ldi R3, 1
+jmp Y
+nop
+
+USELESS: sub R1, R0
+jmpn CHECKOVER
+add R1, R0
+
+Y: mov R0, R1
+
+CHECKOVER: ld R1, R3
+add R1, R3
+add R2, R3
+sub R2, R1
+jmpn L0
+add R2, R1
+
+halt
+D:  jmp D # DONE !!!
+nop 

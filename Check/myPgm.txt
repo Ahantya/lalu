@@ -1,0 +1,5 @@
+load  R1,R0
+ldI   R0,1
+load  R2,R0
+# add numbers
+add   R1,R2
